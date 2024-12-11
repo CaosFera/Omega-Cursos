@@ -1,0 +1,49 @@
+{% extends 'base.html' %}     
+{% block content %}  
+
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-5 p-5">
+            <div class="col-md-8 col-lg-6 col-sm-10 border rounded-3 bg-white">
+                <form method="POST" action="{{ url('/cadastro') }}">
+                    <br>
+                    <h2 class="text-center mb-4">Cadastro</h2>
+                    
+                    <label for="username">Nome:</label>
+                    <input type="text" class="form-control mb-3" id="username" name="username" placeholder="" autocomplete="off">
+
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control mb-3" id="email" name="email" placeholder="" autocomplete="off">
+                                        
+                    <label for="id_password">Senha:</label>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="id_password" name="password" autocomplete="new-password">
+                        <button type="button" class="btn btn-dark" id="show-password">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>   
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-dark loging col-12">Cadastrar</button>                        
+                    </div>
+                    <br>
+                        
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll("#show-password").forEach(function(button) {
+            button.addEventListener("click", function() {
+                var passwordInput = this.parentNode.querySelector("input[type=password]");
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    this.setAttribute("aria-label", "Hide password");
+                } else {
+                    passwordInput.type = "password";
+                    this.setAttribute("aria-label", "Show password");
+                }
+            });
+        });
+    
+     
+    </script>
+{% endblock %}

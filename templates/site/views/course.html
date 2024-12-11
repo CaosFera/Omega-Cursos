@@ -1,0 +1,20 @@
+{% extends 'base.html' %}     
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row">
+        <h1 class="text-center">{{ course.name }}</h1>     
+        <div class="text-center my-4">
+            <img src="{{ course.banner }}" alt="Imagem do Curso" class="img-fluid rounded">
+        </div>
+        <p class="text-center">{{ course.description }}</p>
+        <p class="text-center">Carga Horária: {{ course.duration|round(0) }}</p>
+
+        <div class="text-center my-4">
+            <a href="{{url('matricula/ ~ course.course_id')}}" class="btn btn-success btn-lg">Realizar Matrícula</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
