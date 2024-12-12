@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row">
+        <h1 class="text-center">{{ course.name }}</h1>     
+        <div class="text-center my-4">
+            <img src="{{ course.banner }}" alt="Imagem do Curso" class="img-fluid rounded">
+        </div>
+        <p class="text-center">{{ course.description }}</p>
+        <p class="text-center">Carga Horária: {{ course.duration|round(0) }}</p>
+        <h6 class="card-title text-center">Lançado em: {{ course.created_at | date('Y-m-d') }}</h6>
+
+        <!-- Exibindo a mensagem de alerta se existir -->
+        {% if message %}
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <div class="alert alert-info text-center" role="alert">
+                    {{ message }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+
+        <!-- Formulário para matrícula -->
+        <div class="text-center my-4">
+            <form action="{{ url('matricula/' ~ course.course_id) }}" method="POST">
+                <button type="submit" class="btn btn-success btn-lg">Realizar Matrícula</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

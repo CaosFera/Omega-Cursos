@@ -1,0 +1,61 @@
+
+
+
+
+
+
+{%  extends 'base.html' %}     
+{%  block content  %}  
+
+<div class="container-fluid">
+<div class="row justify-content-center mt-5  p-5">
+  <div class="col-md-8 col-lg-6 col-sm-10 border rounded-3 bg-white">
+      <form method="POST" action="{{ url('/login') }}">
+         
+          <br>
+          <h2 class="text-center mb-4">Login</h2>
+
+          <label for="username">E-mail:</label>
+          <input type="email" class="form-control mb-3" id="username" name="username" placeholder="Digite seu E-mail" autocomplete="off">
+
+          <label for="senha">Senha:</label>
+          <div class="input-group mb-3">
+              <input type="password" class="form-control" id="senha" name="password" autocomplete="new-password">
+              <button type="button" class="btn btn-dark" id="show-password">
+                  <i class="bi bi-eye"></i>
+              </button>
+          </div>
+
+          <script>
+              document.getElementById("show-password").addEventListener("click", function()
+              {
+                  var passwordInput = document.getElementById("senha");
+                  if (passwordInput.type === "password") 
+                  {
+                      passwordInput.type = "text";
+                  } 
+                  else
+                  {
+                      passwordInput.type = "password";
+                  }
+              });
+          </script>
+
+          <div class="d-flex justify-content-between">
+              <a href="{{url('/cadastro')}}" class="btn btn-dark w-50 azul">Cadastrar</a>
+              <button type="submit" class="btn btn-dark  roxo w-50 ">Login</button>
+          </div>
+          <p>
+              <a href="" class="text-decoration-none esqueceu">
+                Esqueceu sua Senha?
+              </a>
+          </p>
+      </form>
+  </div>
+</div>
+</div>
+
+
+
+
+{%  endblock   %}
