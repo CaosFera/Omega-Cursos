@@ -10,13 +10,12 @@ class Controlador
 
     public function __construct(string $diretorio)
     {
-        // Iniciar a sessão aqui, garantindo que a sessão seja inicializada
+        
         if (session_status() == PHP_SESSION_NONE) 
         {
-            session_start(); // Verifica se a sessão ainda não foi iniciada
+            session_start(); 
         }
 
-        // Cria o objeto Template
         $this->template = new Template($diretorio);
     }
 }
